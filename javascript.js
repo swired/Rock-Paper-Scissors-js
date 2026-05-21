@@ -10,3 +10,7 @@ function getComputerChoice() {
 
     return "scissors"
 }
+//assume the user will always enter a valid choice
+function getHumanChoice(){
+    return prompt("Choose rock, paper or scissors to play");
+}
