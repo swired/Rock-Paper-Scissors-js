@@ -18,3 +18,21 @@ function getHumanChoice(){
     return prompt("Choose rock, paper or scissors to play").toLowerCase();
 }
 
+//pieda > tijera, tijera > papel, papel > piedra
+
+function playRound(playerChoice, computerChoice){
+    youWin = `{playerChoice} beats {computerChoice}`
+    youLoose = `{computerChoice} beats {playerChoice}`
+    draw = "draw"
+    if (playerChoice == computerChoice){
+        return draw
+    }
+    if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper") ){
+        return youWin
+    }
+    else{
+        return youLoose
+    }
+
+    
+}
