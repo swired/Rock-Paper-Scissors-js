@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     eleccion = Math.random();
     
@@ -12,5 +15,6 @@ function getComputerChoice() {
 }
 //assume the user will always enter a valid choice
 function getHumanChoice(){
-    return prompt("Choose rock, paper or scissors to play");
+    return prompt("Choose rock, paper or scissors to play").toLowerCase();
 }
+
