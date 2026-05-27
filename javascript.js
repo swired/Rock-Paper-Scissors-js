@@ -21,18 +21,21 @@ function getHumanChoice(){
 //pieda > tijera, tijera > papel, papel > piedra
 
 function playRound(playerChoice, computerChoice){
-    youWin = `{playerChoice} beats {computerChoice}`
-    youLoose = `{computerChoice} beats {playerChoice}`
-    draw = "draw"
+    youWinMessege = `{playerChoice} beats {computerChoice}`
+    youLooseMessege = `{computerChoice} beats {playerChoice}`
+    drawMessege = "draw"
     if (playerChoice == computerChoice){
-        return draw
+        return console.log(drawMessege)
     }
     if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper") ){
-        return youWin
+        humanScore++
+        return console.log(youWinMessege)
     }
     else{
-        return youLoose
+        computerScore++
+        return console.log(youLooseMessege)
     }
 
     
 }
+
