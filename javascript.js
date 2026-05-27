@@ -21,21 +21,41 @@ function getHumanChoice(){
 //pieda > tijera, tijera > papel, papel > piedra
 
 function playRound(playerChoice, computerChoice){
-    youWinMessege = `{playerChoice} beats {computerChoice}`
-    youLooseMessege = `{computerChoice} beats {playerChoice}`
+    youWinMessege = `${playerChoice} beats ${computerChoice}`
+    youLooseMessege = `${computerChoice} beats ${playerChoice}`
     drawMessege = "draw"
     if (playerChoice == computerChoice){
-        return console.log(drawMessege)
+        console.log(drawMessege)
     }
     if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper") ){
         humanScore++
-        return console.log(youWinMessege)
+        console.log("you win the round:" + youWinMessege)
     }
     else{
         computerScore++
-        return console.log(youLooseMessege)
+        console.log("you lose the round:" + youLooseMessege)
     }
 
     
 }
 
+function playGame(){
+    let maxRounds = 5
+    humanScore = 0;
+    computerScore = 0;
+    let i = 0
+    
+    while (i < maxRounds){
+        const playerChoice = getHumanChoice()
+        const computerChoice = getComputerChoice()
+        playRound(playerChoice, computerChoice)
+        i++;
+    }
+
+    if (computerScore > humanScore){
+        return "the computer won the match"
+    }
+    else{
+        return "you won the match!!!"
+    }
+}
