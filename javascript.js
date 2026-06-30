@@ -43,13 +43,13 @@ function playGame(){
     let maxRounds = 5
     humanScore = 0;
     computerScore = 0;
-    let i = 0
+    let round = 0
     
-    while (i < maxRounds){
+    while (round < maxRounds){
         const playerChoice = getHumanChoice()
         const computerChoice = getComputerChoice()
         playRound(playerChoice, computerChoice)
-        i++;
+        round++;
     }
 
     if (computerScore > humanScore){
