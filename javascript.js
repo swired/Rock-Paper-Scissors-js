@@ -13,31 +13,42 @@ function getComputerChoice() {
 
     return "scissors"
 }
-//assume the user will always enter a valid choice
-function getHumanChoice(){
-    return prompt("Choose rock, paper or scissors to play").toLowerCase();
-}
-
-//pieda > tijera, tijera > papel, papel > piedra
 
 function playRound(playerChoice, computerChoice){
-    youWinMessege = `${playerChoice} beats ${computerChoice}`
-    youLooseMessege = `${computerChoice} beats ${playerChoice}`
-    drawMessege = "draw"
+   
+    messegeElem = document.querySelector(".result")
+
+    //draw
     if (playerChoice == computerChoice){
-        console.log(drawMessege)
-        return
+        drawMessege = "draw"
+        messegeElem.textContent = drawMessege
+
     }
-    if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper") ){
+    //you win
+    else if ((playerChoice === "rock" && computerChoice === "scissors") || 
+            (playerChoice === "paper" && computerChoice === "rock") ||
+            (playerChoice === "scissors" && computerChoice === "paper")
+        ){
+        
+        youWinMessege = `${playerChoice} beats ${computerChoice}`
         humanScore++
-        console.log("you win the round:" + youWinMessege)
+        messegeElem.textContent = "you win the round: " + youWinMessege
+        
     }
+
     else{
+        youLooseMessege = `${computerChoice} beats ${playerChoice}`
         computerScore++
-        console.log("you lose the round:" + youLooseMessege)
+        messegeElem.textContent = "you lose the round: " + youLooseMessege
     }
 
     
+}
+
+/*
+
+function getHumanChoice(){ //assume the user will always enter a valid choice
+    return prompt("Choose rock, paper or scissors to play").toLowerCase();
 }
 
 function playGame(){
@@ -60,6 +71,7 @@ function playGame(){
         return "you won the match!!!"
     }
 }
+*/
 
 btn = document.querySelector(".btn.rock");
 btn.addEventListener("click", () => playRound("rock",getComputerChoice()));
