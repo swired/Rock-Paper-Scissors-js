@@ -15,14 +15,14 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice, computerChoice){
-   
+    
     messegeElem = document.querySelector(".result")
+    scoreElem = document.querySelector(".score")
 
     //draw
     if (playerChoice == computerChoice){
         drawMessege = "draw"
         messegeElem.textContent = drawMessege
-
     }
     //you win
     else if ((playerChoice === "rock" && computerChoice === "scissors") || 
@@ -41,8 +41,16 @@ function playRound(playerChoice, computerChoice){
         computerScore++
         messegeElem.textContent = "you lose the round: " + youLooseMessege
     }
-
     
+    if (humanScore === 5 || computerScore === 5){
+        messegeElem.textContent = humanScore === 5 ? "YOU WIN":"YOU LOSE"
+        scoreElem.textContent = "";
+        humanScore = 0
+        computerScore = 0    
+    }
+    else{
+        scoreElem.textContent = `You: ${humanScore} | Computer: ${computerScore}`
+    }
 }
 
 /*
