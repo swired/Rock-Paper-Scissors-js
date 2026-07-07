@@ -16,35 +16,40 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice){
     
-    messegeElem = document.querySelector(".result")
-    scoreElem = document.querySelector(".score")
+    if (humanScore === computerScore && humanScore === 0){
+        const container = document.querySelector("#container")
+        const score = document.createElement("div")
+        score.classList.toggle("score")
+        container.appendChild(score)
+    }
+
+    const messegeElem = document.querySelector(".result")
+    const scoreElem = document.querySelector(".score")
 
     //draw
     if (playerChoice == computerChoice){
-        drawMessege = "draw"
+        const drawMessege = "draw"
         messegeElem.textContent = drawMessege
     }
     //you win
-    else if ((playerChoice === "rock" && computerChoice === "scissors") || 
-            (playerChoice === "paper" && computerChoice === "rock") ||
-            (playerChoice === "scissors" && computerChoice === "paper")
-        ){
-        
-        youWinMessege = `${playerChoice} beats ${computerChoice}`
+    else if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper")){
+        const youWinMessege = `${playerChoice} beats ${computerChoice}`
         humanScore++
         messegeElem.textContent = "you win the round: " + youWinMessege
         
     }
 
     else{
-        youLooseMessege = `${computerChoice} beats ${playerChoice}`
+        const youLooseMessege = `${computerChoice} beats ${playerChoice}`
         computerScore++
         messegeElem.textContent = "you lose the round: " + youLooseMessege
     }
     
+    //finish?
     if (humanScore === 5 || computerScore === 5){
         messegeElem.textContent = humanScore === 5 ? "YOU WIN":"YOU LOSE"
-        scoreElem.textContent = "";
+        const container = document.querySelector("#container")
+        container.removeChild(scoreElem)
         humanScore = 0
         computerScore = 0    
     }
@@ -53,35 +58,13 @@ function playRound(playerChoice, computerChoice){
     }
 }
 
-/*
 
-function getHumanChoice(){ //assume the user will always enter a valid choice
-    return prompt("Choose rock, paper or scissors to play").toLowerCase();
-}
+const result = document.createElement("div")
+result.classList.toggle("result")
+result.textContent = "Choose Rock, Paper or Scissors"
+container.appendChild(result)
 
-function playGame(){
-    let maxRounds = 5
-    humanScore = 0;
-    computerScore = 0;
-    let round = 0
-    
-    while (round < maxRounds){
-        const playerChoice = getHumanChoice()
-        const computerChoice = getComputerChoice()
-        playRound(playerChoice, computerChoice)
-        round++;
-    }
-
-    if (computerScore > humanScore){
-        return "the computer won the match"
-    }
-    else{
-        return "you won the match!!!"
-    }
-}
-*/
-
-btn = document.querySelector(".btn.rock");
+let btn = document.querySelector(".btn.rock");
 btn.addEventListener("click", () => playRound("rock",getComputerChoice()));
 
 btn = document.querySelector(".btn.paper");
