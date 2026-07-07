@@ -2,12 +2,12 @@ let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
-    eleccion = Math.random();
+    const eleccion = Math.random();
     
     if (eleccion < 1/3) {
         return "rock"
     }
-    else if (1/3 <= eleccion && eleccion < 2/3){
+    else if (eleccion < 2/3){
         return "paper"
     }
 
